@@ -1,0 +1,16 @@
+{
+  "name": "Webpage Sample",
+  "version": "1.0.0",
+  "description": "This is a simple webpage using MCV design in Node.js that allows a person to create a database about coffee, and edit said database to add new coffee, delete coffee, and edit the coffee parameters, which include the Brand, Bean, Price and Inventory.",
+  "main": "app.ctrl.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Peter Johnson",
+  "license": "GNU",
+  "dependencies": {
+    "express": "^4.16.4",
+    "mustache-express": "^1.2.8",
+    "sqlite3": "^4.0.6"
+  }
+}

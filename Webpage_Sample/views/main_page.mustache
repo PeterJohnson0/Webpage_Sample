@@ -1,0 +1,79 @@
+<!-- main_page.mustache -->
+<!-- Peter Johnson -->
+<!-- Nov 4, 2019 -->
+<!DOCTYPE html>
+<head>
+  <title>Coffee Web Page</title>
+  <style>
+    td {border: 1px solid black;}
+  </style>
+</head>
+<body>
+  <h1>Coffee Web Page Example</h1>
+  <h2>Coffee Records</h2>
+  <!-- record table -->
+  <table>
+	<!-- Header -->
+	<tr>
+		<th>ID</th>
+		<th>Brand</th>
+		<th>Bean</th>
+		<th>Price</th>
+		<th>Inventory</th>
+		<th>Edit</th>
+		<th>Remove</th>
+	</tr>
+	<!-- Rows -->
+	{{#R_coffee}}
+	<tr>
+		<td>{{rowid}}</td>
+		<td>{{Brand}}</td>
+		<td>{{Bean}}</td>
+		<td>{{Price}}</td>
+		<td>{{Inventory}}</td>
+		<td><a href="/editform/{{rowid}}">E</a></td>
+		<td><a href="/remove/{{rowid}}">R</a></td>
+	</tr>
+	{{/R_coffee}}
+  </table>
+  
+  <!-- Buttons -->
+  <p><a href="/addform">Add New Coffee</a>
+  
+  <!-- Forms -->
+  {{#addcoffee}}
+    <form action="/addcoffee">
+      <label for="Brand">Brand</label>
+      <input type="text" name="Brand"> <br />
+      <label for="Bean">Bean</label>
+	  <select name="Bean">
+	    <option value="Arabica">Arabica</option>
+	    <option value="Robusta">Robusta</option>
+	  </select> <br />
+      <label for="Price">Price</label>
+      <input type="text" name="Price"> <br />
+	  <label for="Inventory">Inventory</label>
+      <input type="text" name="Inventory"> <br />
+      <input type="submit">
+    </form>
+  {{/addcoffee}}
+  
+  {{#editcoffee}}
+    <form action="/editcoffee/{{editid}}">
+      <label for="Brand">Brand</label>
+      <input type="text" value="{{formdata.Brand}}" name="Brand"> <br />
+	  <label for="Bean">Bean</label>
+	  <select name="Bean">
+		<option value="{{formdata.Bean}}" selected>{{formdata.Bean}}</option>
+	    <option value="Arabica">Arabica</option>
+	    <option value="Robusta">Robusta</option>
+	  </select> <br />
+      <label for="Price">Price</label>
+      <input type="text" value="{{formdata.Price}}" name="Price"> <br />
+	  <label for="Inventory">Inventory</label>
+      <input type="text" value="{{formdata.Inventory}}" name="Inventory"> <br />
+      <input type="submit">
+    </form>
+  {{/editcoffee}}
+</body>
+</html>
